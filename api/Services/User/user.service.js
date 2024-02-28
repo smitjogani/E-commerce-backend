@@ -28,9 +28,10 @@ const createUser = async (userData) => {
   }
 };
 
-const getUserById = async (userId) => {
+const findUserById = async (userId) => {
   try {
-    const userResult = await user.findById(userId).populate("address");
+    const userResult = await user.findById(userId)
+//  .populate("address");
 
     if (!userResult) {
       throw new Error("User not found with this id : ", userId);
@@ -83,7 +84,7 @@ const getAllTheUser = async () => {
 
 module.exports = {
   createUser,
-  getUserById,
+  findUserById,
   getUserByEmail,
   getUserProfileByToken,
   getAllTheUser,

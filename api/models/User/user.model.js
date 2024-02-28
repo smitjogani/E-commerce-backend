@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     email: { type: String, required: true },
     role: { type: String, required: true, default: "CUSTOMER" },
-    mobileNo: { type: String, required: true },
+    mobileNo: { type: String },
     address: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "addresses"
