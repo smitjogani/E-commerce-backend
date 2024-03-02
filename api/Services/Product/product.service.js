@@ -163,4 +163,5 @@ module.exports = {
   findProductById,
   updateProduct,
   getAllProducts,
+  createMultipleProduct
 };
