@@ -12,7 +12,7 @@ async function createCart(user) {
   }
 }
 
-async function findUserCart(userID) {
+async function findUserCart(userId) {
   try {
     let cart = await Cart.findOne({ user: user });
 

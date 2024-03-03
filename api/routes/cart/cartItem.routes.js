@@ -4,6 +4,6 @@ const cartItemController = require("../../Controller/cart/cartItem.controller")
 const authenticate = require("../../middleware/authenticate")
 
 router.put("/:id",authenticate,cartItemController.updateCartItem);
-router.get("/:id",authenticate,cartItemController.removeCartItem);
+router.delete("/:id",authenticate,cartItemController.removeCartItem);
 
 module.exports = router;

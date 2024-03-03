@@ -1,20 +1,21 @@
 const cartService = require("../../Services/Cart/cart.service");
 
 const findUserCart = async (req, res) => {
-  const user = req.user;
+  const user = await req.user;
+  // console.log(user);
   try {
-    const cart = await cartService.findUserCart(user._id);
-    return req.status(200).send(cart);
+    const cart = await cartService.findUserCart(user.id);
+    return res.status(200).send(cart);
   } catch (error) {
     return res.status(500).send({ error: error.message });
   }
 };
 
 const addItemToCart = async (req, res) => {
-  const user = req.user;
+  const user = await req.user;
   try {
     const cartItem = await cartService.addCartItem(user._id, req.body);
-    return req.status(200).send(cartItem);
+    return re.status(200).send(cartItem);
   } catch (error) {
     return res.status(500).send({ error: error.message });
   }

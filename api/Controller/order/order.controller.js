@@ -1,7 +1,7 @@
 const orderService = require("../../Services/Order/order.service");
 
 const createOrder = async (req, res) => {
-  const user = req.user;
+  const user = await req.user;
   try {
     const createdOrder = await orderService.createOrder(user, req.body);
     return res.status(201).send(createdOrder);
@@ -11,7 +11,7 @@ const createOrder = async (req, res) => {
 };
 
 const findOrderById = async (req, res) => {
-  const user = req.user;
+  const user = await req.user;
   try {
     const findOrder = await orderService.findOrderById(req.params.id);
     return res.status(201).send(findOrder);
@@ -21,7 +21,7 @@ const findOrderById = async (req, res) => {
 };
 
 const orderHistory = async (req, res) => {
-  const user = req.user;
+  const user = await req.user;
   try {
     const orderedHistory = await orderService.userOrderHistory(user._id);
     return res.status(201).send(orderedHistory);
@@ -29,7 +29,5 @@ const orderHistory = async (req, res) => {
     return res.status(500).send({ error: error.message });
   }
 };
-
-
 
 module.exports = { createOrder, findOrderById, orderHistory };
