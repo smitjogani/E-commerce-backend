@@ -6,7 +6,7 @@ async function createProduct(reqData) {
 
   if (!topLevel) {
     topLevel = new Category({
-      name: reqData.topLevelCategory,
+        name: reqData.topLevelCategory,
       level: 1,
     });
     await topLevel.save();
@@ -49,16 +49,17 @@ async function createProduct(reqData) {
     image: reqData.image,
     brand: reqData.brand,
     price: reqData.price,
-    sizes: reqData.sizes,
+    sizes: reqData.size,
     quantity: reqData.quantity,
     category: thirdLevel._id,
   });
 
   const savedProduct = await product.save();
 
-  const findProduct = await Product.findById(savedProduct._id).populate(
-    "categories"
-  );
+  const findProduct = await Product.findById(savedProduct._id)
+  // .populate(
+  //   "categories"
+  // );
 
   return findProduct;
 }
