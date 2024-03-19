@@ -67,7 +67,7 @@ async function createProduct(reqData) {
 async function deleteProduct(productId) {
   const product = await findProductById(productId);
 
-  product.findByIdAndDelete(productId);
+  Product.findByIdAndDelete(productId);
   return "Product Deleted Successfully";
 }
 
@@ -77,7 +77,7 @@ async function updateProduct(productId, reqData) {
 
 async function findProductById(productId) {
   const product = await Product.findById(productId)
-    .populate("categories")
+    // .populate("categories")
     .exec();
 
   if (!product) {
@@ -103,7 +103,8 @@ async function getAllProducts(reqQuery) {
 
   pageSize = pageSize || 10;
 
-  let query = Product.find().populate("categories");
+  let query = Product.find()
+  // .populate("categories");
 
   if (category) {
     const existCategory = Category.findOne({ name: category });

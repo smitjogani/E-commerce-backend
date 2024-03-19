@@ -4,7 +4,7 @@ const productController = require("../../Controller/product/product.controller")
 const authenticate = require("../../middleware/authenticate");
 
 router.post("/", authenticate, productController.createProduct);
-router.post("/id/:id", authenticate, productController.findProductById);
-router.get("/products", productController.getAllProducts);
+router.get("/id/:id", authenticate, productController.findProductById);
+router.get("/allproducts", productController.getAllProducts);
 
 module.exports = router;
